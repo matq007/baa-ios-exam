@@ -14,15 +14,14 @@ class DetailViewController : UIViewController {
     var movie: Movie?
     
     @IBOutlet weak var uiImage: UIImageView!
-    
     @IBOutlet weak var uiDuration: UILabel!
     @IBOutlet weak var uiArtist: UILabel!
     @IBOutlet weak var uiCategory: UILabel!
     @IBOutlet weak var uiTag: UILabel!
     @IBOutlet weak var uiRentalPrice: UILabel!
     @IBOutlet weak var uiPrice: UILabel!
-    @IBOutlet weak var uiSummary: UIScrollView!
     @IBOutlet weak var uiTitle: UINavigationItem!
+    @IBOutlet weak var uiSummary: UITextView!
     
     @IBAction func uiLink(_ sender: UIButton) {
         if let link = self.movie?.link, let url = NSURL(string: link) {
@@ -40,8 +39,8 @@ class DetailViewController : UIViewController {
            let poster = self.movie?.image,
            let rentalPrice = self.movie?.rentalPrice,
            let price = self.movie?.price,
-            let currency = self.movie?.currency {
-           //let summary = self.movie?.summary {
+           let currency = self.movie?.currency,
+           let summary = self.movie?.summary {
             self.uiTitle.title = title
             self.uiArtist.text = "Artist:\n\(artist)"
             self.uiCategory.text = "Categoryist:\n\(category)"
@@ -50,6 +49,8 @@ class DetailViewController : UIViewController {
             self.uiRentalPrice.text = "Rental price: \(rentalPrice) \(currency)"
             self.uiPrice.text = "Normal price: \(price) \(currency)"
             self.uiDuration.text = "Duration: \(duration)"
+            self.uiSummary.text = summary
+            
         }
         
     }
