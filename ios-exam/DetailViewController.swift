@@ -43,7 +43,7 @@ class DetailViewController : UIViewController {
            let summary = self.movie?.summary {
             self.uiTitle.title = title
             self.uiArtist.text = "Artist:\n\(artist)"
-            self.uiCategory.text = "Categoryist:\n\(category)"
+            self.uiCategory.text = "Category:\n\(category)"
             self.uiTag.text = "Tags:\n\(tag)"
             self.uiImage.image = poster
             self.uiRentalPrice.text = "Rental price: \(rentalPrice) \(currency)"
