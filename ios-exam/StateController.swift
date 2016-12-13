@@ -37,6 +37,7 @@ class StateController : JSONDownloadDelegate {
     
     func getData() {
         _ = JSONDownload(urlPath: Config.ENDPOINT.rawValue, delegate: self)
+        self.movies = []
     }
     
     func finishedDownloadingJSON(data: JSON) {

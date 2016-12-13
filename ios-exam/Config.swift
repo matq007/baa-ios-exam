@@ -11,6 +11,7 @@ import Foundation
 enum Config: String {
     case ENDPOINT = "https://itunes.apple.com/dk/rss/topmovies/limit=100/json"
     case DATE_FORMAT = "yyyy-dd-MM'T'hh:mm:ssZ"
+    case HUMAN_DATE_FORMAT = "yyyy-dd-MM hh:mm:ss"
 }
 
 enum JSONError: String, Error {

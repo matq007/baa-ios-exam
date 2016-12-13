@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-351" y="90"/>
         </scene>
-        <!--Movie Table View Controller-->
+        <!--Last update-->
         <scene sceneID="Aah-XE-wjh">
             <objects>
                 <tableViewController id="PUo-Lt-OUB" customClass="MovieTableViewController" customModule="ios_exam" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,8 +52,9 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3IN-4H-bfd"/>
+                    <navigationItem key="navigationItem" title="Last update" id="3IN-4H-bfd"/>
                     <connections>
+                        <outlet property="uiLastUpdated" destination="3IN-4H-bfd" id="buG-SC-kEG"/>
                         <segue destination="fAm-GZ-Quv" kind="show" identifier="infoSeg" id="Mfn-5J-WF4"/>
                     </connections>
                 </tableViewController>

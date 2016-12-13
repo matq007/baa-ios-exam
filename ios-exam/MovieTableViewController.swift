@@ -11,12 +11,38 @@ import UIKit
 class MovieTableViewController: UITableViewController, StateControllerDelegate {
 
     var stateController: StateController?
+    var rerfreshCtrl: UIRefreshControl!
     
-    func dataIsReady() {
-        tableView.reloadData()
+    @IBOutlet weak var uiLastUpdated: UINavigationItem!
+    
+    override func viewDidLoad() {
         
         tableView.estimatedRowHeight = 75.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.rerfreshCtrl = UIRefreshControl()
+        self.rerfreshCtrl.addTarget(self, action: #selector(MovieTableViewController.refreshTableView) , for: .valueChanged)
+        self.refreshControl = self.rerfreshCtrl
+        
+        refreshTableView()
+    }
+    
+    func refreshTableView() {
+        stateController?.getData()
+        stateController?.delegate = self
+    }
+    
+    func dataIsReady() {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        dateFormatter.dateFormat = Config.HUMAN_DATE_FORMAT.rawValue
+        
+        let updateString = "Last Updated at " + dateFormatter.string(from: currentDate)
+    
+        self.uiLastUpdated.title = updateString
+        self.refreshControl?.endRefreshing()
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

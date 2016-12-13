@@ -19,12 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let tabbarController = window?.rootViewController as? UITabBarController {
         
-            stateController.getData()
-            
             if let tabbar = tabbarController.viewControllers?[0] as? UINavigationController,
                let movieView = tabbar.viewControllers.first as? MovieTableViewController {
                 movieView.stateController = stateController
-                stateController.delegate = movieView
             }
             
             /*if let favoriteView = tabbarController.viewControllers?[1] as? FavoriteTableViewController {
