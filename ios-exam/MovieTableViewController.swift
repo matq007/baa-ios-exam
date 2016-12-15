@@ -15,14 +15,15 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
     
     @IBOutlet weak var uiLastUpdated: UINavigationItem!
     
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         
-        tableView.estimatedRowHeight = 75.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 75
         
         self.rerfreshCtrl = UIRefreshControl()
         self.rerfreshCtrl.addTarget(self, action: #selector(MovieTableViewController.refreshTableView) , for: .valueChanged)
@@ -75,6 +76,7 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as! MovieTableViewCell
         
         if let movie = stateController?.movies[indexPath.row] {
@@ -129,7 +131,6 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
         
         detail.stateController = stateController
         detail.movieId = stateController?.movies[index].id
-        
     }
     
 }

@@ -23,6 +23,7 @@ class DetailViewController : UIViewController {
     @IBOutlet weak var uiPrice: UILabel!
     @IBOutlet weak var uiTitle: UINavigationItem!
     @IBOutlet weak var uiSummary: UITextView!
+    @IBOutlet weak var uiDatePickerText: UITextField!
     
     @IBAction func uiLink(_ sender: UIButton) {
         if let link = self.movie?.link, let url = NSURL(string: link) {
@@ -56,8 +57,49 @@ class DetailViewController : UIViewController {
             self.uiPrice.text = "Normal price: \(price) \(currency)"
             self.uiDuration.text = "Duration: \(duration)"
             self.uiSummary.text = summary
-            
         }
-        
     }
+    
+    @IBAction func uiDatePicker(_ sender: UITextField) {
+        let datePicker = UIDatePicker()
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DetailViewController.doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        datePicker.addTarget(self, action: #selector(DetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        sender.inputView = datePicker
+        sender.inputAccessoryView = toolBar
+    }
+    
+    func doneDatePicker(sender: UIButton) {
+        uiDatePickerText.resignFirstResponder()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Config.HUMAN_DATE_FORMAT.rawValue
+        
+        let selectedDate = dateFormatter.date(from: uiDatePickerText.text!)
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        
+        if let name = movie?.name {
+            let title = "iOS Exam Notification"
+            let body = "You have a notification from \(name)"
+            delegate?.scheduleNotification(at: selectedDate!, title: title, body: body)
+        }
+    }
+    
+    func datePickerValueChanged(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Config.HUMAN_DATE_FORMAT.rawValue
+        uiDatePickerText.text = dateFormatter.string(from: sender.date)
+    }
+    
 }

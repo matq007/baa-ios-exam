@@ -14,14 +14,16 @@ class MovieTableViewCell: UITableViewCell {
     
     var movieId = -1
     var index = -1
+
+    @IBOutlet weak var uiFavorite: UIButton!
+    @IBOutlet weak var uiMovieLabel: UILabel!
+    
     
     var name: String? {
         didSet {
-            textLabel?.text = name
+            uiMovieLabel.text = name
         }
     }
-
-    @IBOutlet weak var uiFavorite: UIButton!
     
     var favorite: Bool? {
         didSet {

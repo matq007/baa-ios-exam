@@ -25,11 +25,9 @@ struct Movie {
     let price: Double
     let currency: String
     
-    let releaseDate: DateFormatter
+    let releaseDate: Date?
     var imageUrl: String
     var image: UIImage?
-    
-    var notify: String = ""
     
     init(id: String, name: String, title: String, artist: String, summary: String,
          category: String, tags: String, duration: String, rights: String, link: String,
@@ -50,9 +48,9 @@ struct Movie {
         self.price = Double(price)!
         self.currency = currency
         
-        self.releaseDate = DateFormatter()
-        self.releaseDate.dateFormat = Config.DATE_FORMAT.rawValue
-        self.releaseDate.date(from: releaseDate)
+        let tmp = DateFormatter()
+        tmp.dateFormat = Config.DATE_FORMAT.rawValue
+        self.releaseDate = tmp.date(from: releaseDate)
         
         self.imageUrl = imageUrl
         self.image = nil
