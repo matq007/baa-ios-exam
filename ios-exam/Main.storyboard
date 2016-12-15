@@ -91,7 +91,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Dm-98-TJF" id="RXb-fI-SOK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5c-J5-sW8">
@@ -121,7 +121,13 @@
                             <outlet property="delegate" destination="VxJ-Wu-rDl" id="aph-Z4-Qrn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="ZZm-rK-uiN"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="ZZm-rK-uiN">
+                        <barButtonItem key="rightBarButtonItem" title="Clear all" id="5dB-sb-nR2">
+                            <connections>
+                                <action selector="uiClearAll:" destination="VxJ-Wu-rDl" id="xpB-BW-BOZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="fAm-GZ-Quv" kind="show" identifier="info2Seg" id="eqU-hx-nic"/>
                     </connections>

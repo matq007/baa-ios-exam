@@ -14,6 +14,13 @@ class FavoriteTableViewController: UITableViewController {
     var storage: Storage?
     var favorites: [Movie]?
     
+    @IBAction func uiClearAll(_ sender: UIBarButtonItem) {
+        self.stateController?.storage?.clear()
+        self.favorites = []
+        tableView.reloadData()
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         if let stateController = stateController {
             favorites = stateController.movies.filter() {

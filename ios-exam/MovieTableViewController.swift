@@ -15,6 +15,10 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
     
     @IBOutlet weak var uiLastUpdated: UINavigationItem!
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         
         tableView.estimatedRowHeight = 75.0
