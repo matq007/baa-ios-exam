@@ -45,6 +45,23 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
         tableView.reloadData()
     }
     
+    @IBAction func uiFavoriteToggle(_ sender: UIButton) {
+
+        if (sender.tag != -1) {
+            let indexPath = IndexPath(row: sender.tag, section: 0)
+            
+            if let cell = tableView.cellForRow(at: indexPath) as! MovieTableViewCell! {
+                if (cell.favorite == true) {
+                    cell.favorite = false
+                    self.stateController?.storage?.delete(key: String(cell.movieId))
+                } else {
+                    cell.favorite = true
+                    self.stateController?.storage?.set(key: String(cell.movieId))
+                }
+            }
+        }
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let stateController = stateController {
             return stateController.movies.count
@@ -54,12 +71,14 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as! MovieTableViewCell
         
         if let movie = stateController?.movies[indexPath.row] {
             
-            cell.textLabel?.text = movie.name
-            // cell.detailTextLabel?.text = movie.category
+            cell.movieId = movie.id
+            cell.index = indexPath.row
+            cell.name = movie.name
+            cell.favorite = self.stateController?.storage?.exists(key: String(movie.id))
             
             if movie.image == nil {
                 // closure for download image
@@ -103,7 +122,9 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detail = segue.destination as! DetailViewController
         let index = sender as! Int
+        
         detail.movie = stateController?.movies[index]
+        
     }
     
 }

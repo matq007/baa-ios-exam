@@ -11,6 +11,7 @@ import UIKit
 class StateController : JSONDownloadDelegate {
 
     var delegate: StateControllerDelegate?
+    var storage: Storage?
     
     // setter is private, getter is public.
     // This way We can hide the implementation
@@ -18,13 +19,6 @@ class StateController : JSONDownloadDelegate {
     
     func add(movie: Movie) {
         movies.append(movie)
-    }
-    
-    func toggleFavorite(movie: Movie) {
-        
-        // store id of movie in local storage
-        // make diff if id is in current json
-        // if not make api call to get data
     }
     
     func setNotification(notify: String) {

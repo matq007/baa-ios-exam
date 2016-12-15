@@ -20,6 +20,8 @@
 		787869E81DFEB59900AFDF03 /* JSONDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787869E71DFEB59900AFDF03 /* JSONDownload.swift */; };
 		787869EA1DFEF0BD00AFDF03 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787869E91DFEF0BD00AFDF03 /* DetailViewController.swift */; };
 		787869EC1DFEF38500AFDF03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787869EB1DFEF38500AFDF03 /* Main.storyboard */; };
+		78B57CD61E0055FA007AD4CD /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B57CD51E0055FA007AD4CD /* Storage.swift */; };
+		78B57CDC1E009C07007AD4CD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B57CDB1E009C07007AD4CD /* MovieTableViewCell.swift */; };
 		78FC0CDE1DFDBEBA00F22150 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC0CDD1DFDBEBA00F22150 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		787869E71DFEB59900AFDF03 /* JSONDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDownload.swift; sourceTree = "<group>"; };
 		787869E91DFEF0BD00AFDF03 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		787869EB1DFEF38500AFDF03 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		78B57CD51E0055FA007AD4CD /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		78B57CDB1E009C07007AD4CD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		78FC0CDD1DFDBEBA00F22150 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,7 @@
 				787869DA1DFEB0EE00AFDF03 /* MovieTableViewController.swift */,
 				787869DC1DFEB0FF00AFDF03 /* FavoriteTableViewController.swift */,
 				787869E91DFEF0BD00AFDF03 /* DetailViewController.swift */,
+				78B57CDB1E009C07007AD4CD /* MovieTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			children = (
 				787869E71DFEB59900AFDF03 /* JSONDownload.swift */,
 				787869E31DFEB18500AFDF03 /* SwiftyJSON.swift */,
+				78B57CD51E0055FA007AD4CD /* Storage.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -216,12 +222,14 @@
 				787869DB1DFEB0EE00AFDF03 /* MovieTableViewController.swift in Sources */,
 				787869E41DFEB18500AFDF03 /* SwiftyJSON.swift in Sources */,
 				7818CFFD1DFDADCF00A2D636 /* AppDelegate.swift in Sources */,
+				78B57CD61E0055FA007AD4CD /* Storage.swift in Sources */,
 				787869E61DFEB1A300AFDF03 /* StateControllerDelegate.swift in Sources */,
 				787869E81DFEB59900AFDF03 /* JSONDownload.swift in Sources */,
 				787869DF1DFEB14500AFDF03 /* StateController.swift in Sources */,
 				787869E11DFEB17300AFDF03 /* JSONDownloadDelegate.swift in Sources */,
 				78FC0CDE1DFDBEBA00F22150 /* Movie.swift in Sources */,
 				787869DD1DFEB0FF00AFDF03 /* FavoriteTableViewController.swift in Sources */,
+				78B57CDC1E009C07007AD4CD /* MovieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

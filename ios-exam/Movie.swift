@@ -29,7 +29,6 @@ struct Movie {
     var imageUrl: String
     var image: UIImage?
     
-    var favorite: Bool = false
     var notify: String = ""
     
     init(id: String, name: String, title: String, artist: String, summary: String,
