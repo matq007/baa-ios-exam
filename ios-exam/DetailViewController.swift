@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController : UIViewController {
     
     var stateController: StateController?
+    var movieId: Int?
     var movie: Movie?
     
     @IBOutlet weak var uiImage: UIImageView!
@@ -30,6 +31,11 @@ class DetailViewController : UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        if let movieId = movieId,
+           let stateController = stateController {
+            self.movie = stateController.movies.filter{ $0.id == movieId }.first
+        }
         
         if let title = self.movie?.title,
            let artist = self.movie?.artist,

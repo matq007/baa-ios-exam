@@ -123,7 +123,8 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
         let detail = segue.destination as! DetailViewController
         let index = sender as! Int
         
-        detail.movie = stateController?.movies[index]
+        detail.stateController = stateController
+        detail.movieId = stateController?.movies[index].id
         
     }
     

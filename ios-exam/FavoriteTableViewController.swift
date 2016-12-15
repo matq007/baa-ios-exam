@@ -61,7 +61,8 @@ class FavoriteTableViewController: UITableViewController {
         let detail = segue.destination as! DetailViewController
         let index = sender as! Int
         
-        detail.movie = favorites?[index]
+        detail.stateController = stateController
+        detail.movieId = favorites?[index].id
     }
     
 }
