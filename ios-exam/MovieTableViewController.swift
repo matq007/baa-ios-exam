@@ -58,10 +58,10 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
             if let cell = tableView.cellForRow(at: indexPath) as! MovieTableViewCell! {
                 if (cell.favorite == true) {
                     cell.favorite = false
-                    self.stateController?.storage?.delete(key: String(cell.movieId))
+                    self.stateController?.storage?.remove(key: cell.movieId)
                 } else {
                     cell.favorite = true
-                    self.stateController?.storage?.set(key: String(cell.movieId))
+                    self.stateController?.storage?.add(key: cell.movieId)
                 }
             }
         }
@@ -84,7 +84,7 @@ class MovieTableViewController: UITableViewController, StateControllerDelegate {
             cell.movieId = movie.id
             cell.index = indexPath.row
             cell.name = movie.name
-            cell.favorite = self.stateController?.storage?.exists(key: String(movie.id))
+            cell.favorite = self.stateController?.storage?.exists(key: movie.id)
             
             if movie.image == nil {
                 // closure for download image

@@ -24,7 +24,7 @@ class FavoriteTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let stateController = stateController {
             favorites = stateController.movies.filter() {
-                return (self.stateController?.storage?.exists(key: String($0.id)))!
+                return (self.stateController?.storage?.exists(key: $0.id))!
             }
         }
         

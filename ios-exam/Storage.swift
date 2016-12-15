@@ -12,20 +12,20 @@ class Storage {
     
     let storage = UserDefaults.standard
     
-    func exists(key: String) -> Bool {
-        if (storage.string(forKey: key) != nil) {
+    func exists(key: Int) -> Bool {
+        if (storage.string(forKey: String(key)) != nil) {
             return true
         }
         
         return false
     }
     
-    func set(key: String) -> Void{
-        self.storage.set(true, forKey: key)
+    func add(key: Int) -> Void{
+        self.storage.set(true, forKey: String(key))
     }
     
-    func delete(key: String) -> Void {
-        self.storage.removeObject(forKey: key)
+    func remove(key: Int) -> Void {
+        self.storage.removeObject(forKey: String(key))
     }
     
     func clear() -> Void {

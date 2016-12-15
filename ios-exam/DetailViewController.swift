@@ -24,8 +24,26 @@ class DetailViewController : UIViewController {
     @IBOutlet weak var uiTitle: UINavigationItem!
     @IBOutlet weak var uiSummary: UITextView!
     @IBOutlet weak var uiDatePickerText: UITextField!
+    @IBOutlet weak var uiCopyright: UILabel!
+    @IBOutlet weak var uiFavoritesBtn: UIButton!
     
-    @IBAction func uiLink(_ sender: UIButton) {
+    @IBAction func uiToggleFavorite(_ sender: UIButton) {
+        
+        if let stateController = stateController,
+            let movie = movie {
+            
+            if (stateController.storage?.exists(key: movie.id))! {
+                stateController.storage?.remove(key: movie.id)
+                sender.setTitle("Add into favorites", for: .normal)
+            } else {
+                stateController.storage?.add(key: movie.id)
+                sender.setTitle("Remove from favorites", for: .normal)
+            }   
+        }
+    }
+    
+    
+    @IBAction func uiOpenLink(_ sender: UIButton) {
         if let link = self.movie?.link, let url = NSURL(string: link) {
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }
@@ -36,6 +54,12 @@ class DetailViewController : UIViewController {
         if let movieId = movieId,
            let stateController = stateController {
             self.movie = stateController.movies.filter{ $0.id == movieId }.first
+            
+            if (stateController.storage?.exists(key: (movie?.id)!))! {
+                uiFavoritesBtn.setTitle("Remove from favorites", for: .normal)
+            } else {
+                uiFavoritesBtn.setTitle("Add to favorites", for: .normal)
+            }
         }
         
         if let title = self.movie?.title,
@@ -47,17 +71,20 @@ class DetailViewController : UIViewController {
            let rentalPrice = self.movie?.rentalPrice,
            let price = self.movie?.price,
            let currency = self.movie?.currency,
-           let summary = self.movie?.summary {
+           let summary = self.movie?.summary,
+           let copyright = self.movie?.rights {
             self.uiTitle.title = title
-            self.uiArtist.text = "Artist:\n\(artist)"
-            self.uiCategory.text = "Category:\n\(category)"
-            self.uiTag.text = "Tags:\n\(tag)"
+            self.uiArtist.text = "Artist: \(artist)"
+            self.uiCategory.text = "Category: \(category)"
+            self.uiTag.text = "Tags: \(tag)"
             self.uiImage.image = poster
             self.uiRentalPrice.text = "Rental price: \(rentalPrice) \(currency)"
             self.uiPrice.text = "Normal price: \(price) \(currency)"
             self.uiDuration.text = "Duration: \(duration)"
             self.uiSummary.text = summary
+            self.uiCopyright.text = copyright
         }
+        
     }
     
     @IBAction func uiDatePicker(_ sender: UITextField) {
